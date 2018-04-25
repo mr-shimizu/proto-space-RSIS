@@ -4,3 +4,6 @@
 tmp/pids/server.pid
 
 log/development.log
+
+# ignore uploaded photos
+public/
