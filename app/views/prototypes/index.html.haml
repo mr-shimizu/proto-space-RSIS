@@ -13,10 +13,6 @@
       = link_to "VIEW TAGS", "#", class: "btn btn-default col-lg-1"
 
 .container.proto-list
-  .btn.btn-primary.navbar-btn
-    削除
-    = link_to '削除', "/prototypes/#{prototype.id}", method: :delete
-
   .row
     = render partial: 'prototypes/prototype', collection: @prototypes
 
