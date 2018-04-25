@@ -1,2 +1,6 @@
 # ignore cache files
 *.cache
+
+tmp/pids/server.pid
+
+log/development.log
