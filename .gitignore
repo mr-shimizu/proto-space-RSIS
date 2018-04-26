@@ -4,3 +4,6 @@
 tmp/pids/server.pid
 
 log/development.log
+
+# ignore log of capistrano
+log/capistrano.log
