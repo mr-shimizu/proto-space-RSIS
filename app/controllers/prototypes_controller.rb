@@ -23,9 +23,7 @@ class PrototypesController < ApplicationController
   end
 
   def destroy
-    if @prototype.user_id == current_user.id
       @prototype.destroy
-    end
   end
   private
 
