@@ -26,7 +26,7 @@ class PrototypesController < ApplicationController
   end
 
   def update
-    if @prototype = Prototype.update(prototype_params)
+    if @prototype.update(prototype_params)
       redirect_to prototype_path(@prototype), notice: 'プロトタイプを更新しました'
     else
       render :edit
