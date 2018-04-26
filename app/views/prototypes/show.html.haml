@@ -9,7 +9,8 @@
           %h4#top-aligned-media.media-heading
             = @prototype.title
             .btn.btn-xs.navbar-inverse.btn-edit
-              = link_to "EDIT", edit_prototype_path(@prototype.user)
+              = link_to "EDIT", edit_prototype_path(@prototype)
+              / 馬場園のヘルパーメソッドを後で使って、current_userのものにしか表示されないようにする
           .proto-user
             by
             = link_to "#{@prototype.user.name}", user_path(@prototype.user)
