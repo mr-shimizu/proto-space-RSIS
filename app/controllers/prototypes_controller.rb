@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :set_prototype, only: :show
+  before_action :set_prototype, only: [:show, :destroy]
 
   def index
     @prototypes = Prototype.all
@@ -22,6 +22,9 @@ class PrototypesController < ApplicationController
   def show
   end
 
+  def destroy
+      @prototype.destroy
+  end
   private
 
   def set_prototype
