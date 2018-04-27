@@ -1,0 +1,11 @@
+.container.proto-page
+  %header.row.user-nav
+    .col-md-6
+      .media
+  .row
+    .col-md-9.image-box
+      '削除しました'
+      / = image_tag(@prototype.set_main_thumbnail.large, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")
+  .row.proto-description
+    .btn.btn-primary.navbar-btn
+      = link_to 'Topへ戻る', root_path
