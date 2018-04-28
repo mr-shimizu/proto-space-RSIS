@@ -1,8 +1,12 @@
 class CommentsController < ApplicationController
 
   def create
-    @comment = Comment.create(content: comment_params[:content], user_id: current_user.id, prototype_id: comment_params[:prototype_id])
-    redirect_to prototype_path(@comment.prototype.id)   #コメントと結びつく詳細画面に遷移する
+    @comment = Comment.new(content: comment_params[:content], user_id: current_user.id, prototype_id: comment_params[:prototype_id])
+    if @comment.save
+      redirect_to prototype_path(@comment.prototype.id)
+    else
+      redirect_to prototype_path(@comment.prototype.id)
+    end
   end
 
   private
