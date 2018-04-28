@@ -11,11 +11,10 @@ class CommentsController < ApplicationController
 
   def destroy
     comment = Comment.find(params[:id])
-    @prototype = Prototype.find(params[:prototype_id])
     if comment.user_id == current_user.id
       comment.destroy
     end
-    redirect_to prototype_path(@prototype.id)
+    redirect_to prototype_path(params[:prototype_id])
   end
 
   private
