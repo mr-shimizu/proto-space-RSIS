@@ -1,0 +1,26 @@
+.container.proto-page
+  %header.row.user-nav
+    .col-md-6
+      .media
+        .media-left
+          = link_to user_path(@prototype.user) do
+            = image_tag(@prototype.user.avatar.thumb, alt: "profile_photo", class: "media-object", style: "width: 64px; height: 64px;")
+        .media-body
+          %h4#top-aligned-media.media-heading
+            = @prototype.title
+          .proto-user
+            by
+            = link_to "#{@prototype.user.name}", user_path(@prototype.user)
+            .degree
+              = @prototype.user.position
+      .form-inlign{role: "form"}
+        = form_tag(prototype_comment_path(@comment.prototype_id, @comment.id), :method => :patch, class: "new_comment") do
+          %h4 Write a comment
+          .row
+            .form-group.col-md-10
+              = text_area_tag "comment[content]", "#{@comment.content}", placeholder: "Input comment", required: "required", rows: 3, class: "form-control", id: "comment_field"
+              = hidden_field_tag "comment[user_id]", current_user.id
+              = hidden_field_tag "comment[prototype_id]", @prototype.id
+            .form-group.col-md-2
+              = submit_tag "comment", class: "btn btn-primary"
+
