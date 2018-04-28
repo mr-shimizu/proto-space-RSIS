@@ -6,5 +6,6 @@
     %h4.media-heading#top-aligned-media
       = comment.user.name
       = link_to("削除", prototype_comment_path(comment.prototype_id, comment.id), method: :delete)
+      = link_to("編集", edit_prototype_comment_path(comment.prototype_id, comment.id))
     %P
       = comment.content
