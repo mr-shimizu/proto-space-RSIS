@@ -46,6 +46,7 @@
       %span#comments_count.num (#{@comments.length})
     .col-md-8
       #comments
+        = render @comments
       .form-inlign{role: "form"}
         = form_tag(prototype_comments_path(@prototype), class: "new_comment", id: "new_comment", remote: true) do
           %h4 Write a comment
