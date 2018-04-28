@@ -10,6 +10,17 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    @prototype =Prototype.find(params[:prototype_id])
+  end
+
+  def update
+    if @comment.user_id == current_user.id
+      @comment.update(comment_params)
+    end
+    redirect_to prototype_path(params[:prototype_id])
+  end
+
   def destroy
     if @comment.user_id == current_user.id
       @comment.destroy
