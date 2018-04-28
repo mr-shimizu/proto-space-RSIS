@@ -7,3 +7,5 @@ log/development.log
 
 # ignore log of capistrano
 log/capistrano.log
+
+/public
