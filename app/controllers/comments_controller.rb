@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :set_comment, only: [:edit, :update, :destroy]
 
   def create
     @comment = Comment.new(content: comment_params[:content], user_id: current_user.id, prototype_id: comment_params[:prototype_id])
@@ -20,5 +21,9 @@ class CommentsController < ApplicationController
   private
   def comment_params
     params.require(:comment).permit(:content, :prototype_id, :user_id)
+  end
+
+  def set_comment
+    @comment = Comment.find(params[:id])
   end
 end
