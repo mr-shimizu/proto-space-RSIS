@@ -16,7 +16,7 @@ class PrototypesController < ApplicationController
       redirect_to :root, notice: 'New prototype was successfully created'
     else
       redirect_to ({ action: new }), alert: 'YNew prototype was unsuccessfully created'
-     end
+    end
   end
 
   def show
@@ -25,7 +25,7 @@ class PrototypesController < ApplicationController
   end
 
   def destroy
-      @prototype.destroy
+    @prototype.destroy
   end
   private
 
@@ -40,6 +40,6 @@ class PrototypesController < ApplicationController
       :concept,
       :user_id,
       captured_images_attributes: [:content, :status]
-    )
+      )
   end
 end
