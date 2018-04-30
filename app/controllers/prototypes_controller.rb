@@ -20,6 +20,7 @@ class PrototypesController < ApplicationController
   end
 
   def show
+    @like = Like.find(params[:id])
   end
 
   def destroy
