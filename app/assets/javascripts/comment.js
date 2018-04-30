@@ -11,5 +11,13 @@ $(document).on("turbolinks:load",function(){
         processData: false,
         contentType: false
       })
+      .done(function(data){
+        let html = buildHTML(data);
+        $('#comments').append(html)
+        $('#comment_field').val('')
+      })
+      .fail(function(){
+        alert('error');
+      })
   });
 });
