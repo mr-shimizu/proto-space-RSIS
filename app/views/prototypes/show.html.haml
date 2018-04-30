@@ -47,6 +47,7 @@
     .col-md-8
       #comments
         = render @comments
+      -if user_signed_in?
         .form-inlign{role: "form"}
           = form_for([@prototype, @comment]) do |f|
             %h4 Write a comment
@@ -57,3 +58,6 @@
                 = f.hidden_field(:prototype_id, value: @prototype.id)
               .form-group.col-md-2
                 = f.submit "comment", class: "btn btn-primary"
+      -else
+        %h4
+          = link_to "Sign In to comment", new_user_session_path
