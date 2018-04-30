@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :move_to_sign_in
   before_action :set_comment, only: [:edit, :update, :destroy]
 
   def create
@@ -34,6 +35,10 @@ class CommentsController < ApplicationController
   private
   def comment_params
     params.require(:comment).permit(:content, :prototype_id, :user_id)
+  end
+
+  def move_to_sign_in
+    redirect_to new_user_session_path unless user_signed_in?
   end
 
   def set_comment
