@@ -18,8 +18,7 @@
               = @prototype.user.position
   .row
     - if current_user_has?(@prototype)
-      .btn.btn-primary.navbar-btn
-        = link_to '削除', "/prototypes/#{@prototype.id}", method: :delete
+      = link_to '削除', "/prototypes/#{@prototype.id}", method: :delete, class: "btn btn-primary navbar-btn"
     .col-md-9.image-box
       = image_tag(@prototype.set_main_thumbnail.large, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")
     .col-md-3
@@ -43,3 +42,24 @@
           %a{href: "#", class: "btn btn-default"} iPad
         %li
           %a{href: "#", class: "btn btn-default"} wireframe
+  .row.proto-comments
+    %h4.col-md-12
+      Comments
+      %span#comments_count.num (#{@comments.length})
+    .col-md-8
+      #comments
+        = render @comments
+      -if user_signed_in?
+        .form-inlign{role: "form"}
+          = form_for([@prototype, @comment]) do |f|
+            %h4 Write a comment
+            .row
+              .form-group.col-md-10
+                = f.text_area(:content, row: 3, placeholder: "Input comment", required: "required", class: "form-control", id: "comment_field")
+                = f.hidden_field(:user_id, value: current_user.id)
+                = f.hidden_field(:prototype_id, value: @prototype.id)
+              .form-group.col-md-2
+                = f.submit "comment", class: "btn btn-primary"
+      -else
+        %h4
+          = link_to "Sign In to comment", new_user_session_path
