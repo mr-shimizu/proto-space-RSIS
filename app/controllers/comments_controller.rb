@@ -4,9 +4,12 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(content: comment_params[:content], user_id: current_user.id, prototype_id: comment_params[:prototype_id])
     if @comment.save
-      redirect_to prototype_path(@comment.prototype.id)
+      respond_to do |format|
+        format.html { redirect_to prototype_path(params[:prototype_id]) }
+        format.json
+      end
     else
-      redirect_to prototype_path(@comment.prototype.id)
+      redirect_to prototype_path(params[:prototype_id])
     end
   end
 
