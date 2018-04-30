@@ -47,14 +47,13 @@
     .col-md-8
       #comments
         = render @comments
-      .form-inlign{role: "form"}
-        = form_tag(prototype_comments_path(@prototype), class: "new_comment", id: "new_comment", remote: true) do
-          %h4 Write a comment
-          .row
-            .form-group.col-md-10
-              = text_area_tag "comment[content]", nil, placeholder: "Input comment", required: "required", rows: 3, class: "form-control", id: "comment_field"
-              = hidden_field_tag "comment[user_id]", current_user.id
-              = hidden_field_tag "comment[prototype_id]", @prototype.id
-            .form-group.col-md-2
-              = submit_tag "comment", class: "btn btn-primary"
-
+        .form-inlign{role: "form"}
+          = form_for([@prototype, @comment]) do |f|
+            %h4 Write a comment
+            .row
+              .form-group.col-md-10
+                = f.text_area(:content, row: 3, placeholder: "Input comment", required: "required", class: "form-control", id: "comment_field")
+                = f.hidden_field(:user_id, value: current_user.id)
+                = f.hidden_field(:prototype_id, value: @prototype.id)
+              .form-group.col-md-2
+                = f.submit "comment", class: "btn btn-primary"
