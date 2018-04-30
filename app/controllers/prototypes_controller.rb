@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :set_prototype, only: [:show, :destroy]
+  before_action :set_prototype, only: [:show, :edit, :update, :destroy]
 
   def index
     @prototypes = Prototype.all
@@ -24,9 +24,21 @@ class PrototypesController < ApplicationController
     @comments = @prototype.comments.includes(:user)
   end
 
+  def edit
+  end
+
+  def update
+    if @prototype.update(prototype_params)
+      redirect_to prototype_path(@prototype), notice: 'プロトタイプを更新しました'
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @prototype.destroy
   end
+
   private
 
   def set_prototype

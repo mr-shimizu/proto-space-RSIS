@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 20180426071312) do
     t.string   "catch_copy", limit: 255
     t.text     "concept",    limit: 65535
     t.integer  "user_id",    limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "prototypes", ["user_id"], name: "index_prototypes_on_user_id", using: :btree
