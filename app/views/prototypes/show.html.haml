@@ -13,6 +13,9 @@
             = link_to "#{@prototype.user.name}", user_path(@prototype.user)
             .degree
               = @prototype.user.position
+  .like-button
+    #like-buttons
+      =render "like"
   .row
     - if current_user_has?(@prototype)
       .btn.btn-primary.navbar-btn
