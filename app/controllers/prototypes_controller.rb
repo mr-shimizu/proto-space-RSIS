@@ -1,8 +1,8 @@
 class PrototypesController < ApplicationController
-  before_action :set_prototype, only: [:show, :destroy]
+  before_action :set_prototype, only: [:show, :edit, :update, :destroy]
 
   def index
-    @prototypes = Prototype.all
+    @prototypes = Prototype.all.page(params[:page]).per(10)
   end
 
   def new
@@ -20,14 +20,27 @@ class PrototypesController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @prototype.comments.includes(:user)
     if user_signed_in?
       @like = @prototype.likes.find_by(user_id: current_user.id)
+  end
+
+  def edit
+  end
+
+  def update
+    if @prototype.update(prototype_params)
+      redirect_to prototype_path(@prototype), notice: 'プロトタイプを更新しました'
+    else
+      render :edit
     end
   end
 
   def destroy
-      @prototype.destroy
+    @prototype.destroy
   end
+
   private
 
   def set_prototype
@@ -41,6 +54,6 @@ class PrototypesController < ApplicationController
       :concept,
       :user_id,
       captured_images_attributes: [:content, :status]
-    )
+      )
   end
 end

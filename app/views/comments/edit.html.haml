@@ -1,0 +1,18 @@
+
+.media
+  .media-left
+    = link_to user_path(@comment.user.id) do
+      = image_tag(@comment.user.avatar.thumb, alt: "profile_photo", class: "media-object", style: "width: 64px; height: 64px;")
+  .media-body
+    %h4.media-heading#top-aligned-media
+      = @comment.user.name
+    .form-inlign{role: "form"}
+      = form_for([@prototype, @comment]) do |f|
+        %h4 Edit a comment
+        .row
+          .form-group.col-md-10
+            = f.text_area(:content, row: 3, placeholder: "Input comment", required: "required", class: "form-control", id: "comment_field")
+            = f.hidden_field(:user_id, value: current_user.id)
+            = f.hidden_field(:prototype_id, value: @prototype.id)
+          .form-group.col-md-2
+            = f.submit "comment", class: "btn btn-primary"
