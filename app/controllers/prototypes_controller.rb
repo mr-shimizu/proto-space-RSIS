@@ -16,11 +16,13 @@ class PrototypesController < ApplicationController
       redirect_to :root, notice: 'New prototype was successfully created'
     else
       redirect_to ({ action: new }), alert: 'YNew prototype was unsuccessfully created'
-     end
+    end
   end
 
   def show
-    @like = Like.find(params[:id])
+    if user_signed_in?
+      @like = @prototype.likes.find_by(user_id: current_user.id)
+    end
   end
 
   def destroy
