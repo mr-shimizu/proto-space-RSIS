@@ -1,15 +1,15 @@
-- if user_signed_in?
-  - if @prototype.like_user(current_user.id)
-    = button_to prototype_like_path(@like, prototype_id: @prototype.id), method: :delete, id: "like-button", remote: true do
-      = image_tag("icon_red_heart.svg")
-      %span
-        = @prototype.likes_count
+.col-md-6.text-right
+  - if user_signed_in?
+    - if @prototype.like_user(current_user.id)
+      = button_to prototype_like_path(@prototype.id, @like.id), method: :delete, id: "like-button" do
+        = image_tag("icon_red_heart.svg")
+        %span
+          = @prototype.likes_count
+    - else
+      = button_to prototype_likes_path(@prototype), id: "like", class: ".btn btn-default btn-like" do
+        = image_tag("icon_heart.svg")
+        %span
+          = @prototype.likes_count
   - else
-    = button_to prototype_likes_path(@prototype), id: "like-button", remote: true do
-      = image_tag("icon_heart.svg")
-      %span
-        = @prototype.likes_count
-- else
-  = image_tag("icon_heart.svg")
-  %span
-    = prototype.like_count
+    %button#like.btn.btn-default.btn-like
+      When you log in you can press the LIKE button♡
