@@ -22,6 +22,9 @@ class PrototypesController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @prototype.comments.includes(:user)
+    if user_signed_in?
+      @like = @prototype.like_user(current_user.id)
+    end
   end
 
   def edit

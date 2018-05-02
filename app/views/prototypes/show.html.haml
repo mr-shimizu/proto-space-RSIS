@@ -15,6 +15,8 @@
             = link_to "#{@prototype.user.name}", user_path(@prototype.user)
             .degree
               = @prototype.user.position
+  .like-button
+    =render "like"
   .row
     - if current_user_has?(@prototype)
       = link_to '削除', "/prototypes/#{@prototype.id}", method: :delete, class: "btn btn-primary navbar-btn"
