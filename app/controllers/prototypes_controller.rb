@@ -2,7 +2,7 @@ class PrototypesController < ApplicationController
   before_action :set_prototype, only: [:show, :edit, :update, :destroy]
 
   def index
-    @prototypes = Prototype.all
+    @prototypes = Prototype.all.page(params[:page]).per(10)
   end
 
   def new
@@ -16,10 +16,15 @@ class PrototypesController < ApplicationController
       redirect_to :root, notice: 'New prototype was successfully created'
     else
       redirect_to ({ action: new }), alert: 'YNew prototype was unsuccessfully created'
-     end
+    end
   end
 
   def show
+    @comment = Comment.new
+    @comments = @prototype.comments.includes(:user)
+    if user_signed_in?
+      @like = @prototype.like_user(current_user.id)
+    end
   end
 
   def edit
@@ -34,7 +39,7 @@ class PrototypesController < ApplicationController
   end
 
   def destroy
-      @prototype.destroy
+    @prototype.destroy
   end
 
   private
@@ -51,6 +56,6 @@ class PrototypesController < ApplicationController
       :user_id,
       :tag_list,
       captured_images_attributes: [:content, :status]
-    )
+      )
   end
 end
