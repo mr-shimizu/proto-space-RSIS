@@ -1,0 +1,10 @@
+= render partial: 'shared/semi_header'
+
+.container
+  .row
+    .tags-list
+      %h2 Tag List
+      %ul
+        - @tags.each do |tag|
+          %li.col-md-4
+            = link_to tag, tag_path(tag.name), class: "btn btn-default"
