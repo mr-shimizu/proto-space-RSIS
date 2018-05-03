@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180501094636) do
+ActiveRecord::Schema.define(version: 20180503092956) do
 
   create_table "captured_images", force: :cascade do |t|
     t.string  "content",      limit: 255
@@ -20,11 +20,6 @@ ActiveRecord::Schema.define(version: 20180501094636) do
   end
 
   add_index "captured_images", ["prototype_id"], name: "index_captured_images_on_prototype_id", using: :btree
-
-  create_table "likes", force: :cascade do |t|
-    t.integer "user_id",      limit: 4
-    t.integer "prototype_id", limit: 4
-  end
 
   create_table "comments", force: :cascade do |t|
     t.text     "content",      limit: 65535
@@ -37,11 +32,20 @@ ActiveRecord::Schema.define(version: 20180501094636) do
   add_index "comments", ["prototype_id"], name: "fk_rails_5a7b40847a", using: :btree
   add_index "comments", ["user_id"], name: "fk_rails_03de2dc08c", using: :btree
 
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id",      limit: 4
+    t.integer "prototype_id", limit: 4
+    t.integer "likes_count",  limit: 4, default: 0, null: false
+  end
+
+  add_index "likes", ["prototype_id"], name: "fk_rails_8847d87628", using: :btree
+  add_index "likes", ["user_id"], name: "fk_rails_1e09b5dabf", using: :btree
+
   create_table "prototypes", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.string   "catch_copy", limit: 255
-    t.text     "concept",    limit: 65535
-    t.integer  "user_id",    limit: 4
+    t.string   "title",       limit: 255
+    t.string   "catch_copy",  limit: 255
+    t.text     "concept",     limit: 65535
+    t.integer  "user_id",     limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "likes_count", limit: 4
@@ -102,5 +106,7 @@ ActiveRecord::Schema.define(version: 20180501094636) do
   add_foreign_key "captured_images", "prototypes"
   add_foreign_key "comments", "prototypes"
   add_foreign_key "comments", "users"
+  add_foreign_key "likes", "prototypes"
+  add_foreign_key "likes", "users"
   add_foreign_key "prototypes", "users"
 end

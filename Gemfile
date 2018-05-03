@@ -18,6 +18,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'acts-as-taggable-on'
 gem 'kaminari'
+gem 'counter_culture', '~> 1.8'
 
 group :development, :test do
   gem 'byebug'
