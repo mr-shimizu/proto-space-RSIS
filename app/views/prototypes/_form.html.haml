@@ -31,11 +31,10 @@
               - else
                 %li.list-group-item.col-md-4
                   .image-upload
-                    = f.fields_for :captured_images do |image|
                       %img
                       = image.file_field :content
+                    = f.fields_for :captured_images, @captured_image, include_id: false do |image|
                       = image.hidden_field :status, value: "sub"
-                      = image.hidden_field :id, value: nil
       .row.proto-description
         .col-md-12
           %h4 Catch Copy
