@@ -15,6 +15,7 @@
             = f.fields_for :captured_images, main_image do |image|
               %img
               = image.file_field :content, required: true
+              = image.file_field :content, required: true, class: 'upload-fields'
               = image.hidden_field :status, value: "main"
         .col-md-12
           %h4 Sub Thumbnails
@@ -26,14 +27,14 @@
                   .image-upload
                     = f.fields_for :captured_images, sub_images[i] do |image|
                       %img
-                      = image.file_field :content
+                      = image.file_field :content, class: "upload-fields"
                       = image.hidden_field :status, value: "sub"
               - else
                 %li.list-group-item.col-md-4
                   .image-upload
                       %img
-                      = image.file_field :content
                     = f.fields_for :captured_images, @captured_image, include_id: false do |image|
+                      = image.file_field :content, class: "upload-fields"
                       = image.hidden_field :status, value: "sub"
       .row.proto-description
         .col-md-12
