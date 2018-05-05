@@ -13,8 +13,8 @@
           .cover-image-upload#main_image_uploader
             -  main_image = @prototype.captured_images.main.first
             = f.fields_for :captured_images, main_image do |image|
-              %img
-              = image.file_field :content, required: true
+              -if main_image
+                = image_tag(@prototype.set_main_thumbnail.large, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")
               = image.file_field :content, required: true, class: 'upload-fields'
               = image.hidden_field :status, value: "main"
         .col-md-12
@@ -26,14 +26,14 @@
                 %li.list-group-item.col-md-4
                   .image-upload
                     = f.fields_for :captured_images, sub_images[i] do |image|
-                      %img
+                      = image_tag(sub_images[i].content, class: 'img-responsive')
                       = image.file_field :content, class: "upload-fields"
                       = image.hidden_field :status, value: "sub"
               - else
                 %li.list-group-item.col-md-4
                   .image-upload
-                      %img
                     = f.fields_for :captured_images, @captured_image, include_id: false do |image|
+                      = image_tag(nil, class: 'img-responsive')
                       = image.file_field :content, class: "upload-fields"
                       = image.hidden_field :status, value: "sub"
       .row.proto-description
