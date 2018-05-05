@@ -1,4 +1,9 @@
 class LikesController < ApplicationController
+  def index
+    @prototypes = Prototype.all.page(params[:page]).per(10).order("likes_count DESC")
+  end
+
+
   def create
     @like = Like.create(like_params)
     redirect_to prototype_path(params[:prototype_id])
