@@ -28,6 +28,7 @@ class PrototypesController < ApplicationController
   end
 
   def edit
+    @captured_image = @prototype.captured_images.build
   end
 
   def update
