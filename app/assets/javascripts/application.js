@@ -15,3 +15,16 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+$(document).on('turbolinks:load', function() {
+  let SECOND = 1000
+  setInterval(function() {
+    let favicon_name = $("#animate_favicon").attr('href');
+    if (favicon_name == "/assets/tacos_2.gif") {
+      let favicon_name = $("#animate_favicon").attr('href', "/assets/tacos_3.gif");
+    } else if (favicon_name == "/assets/tacos_3.gif") {
+      let favicon_name = $("#animate_favicon").attr('href', "/assets/tacos_1.gif");
+    } else {
+      let favicon_name = $("#animate_favicon").attr('href', "/assets/tacos_2.gif");
+    }
+  }, SECOND);
+});
