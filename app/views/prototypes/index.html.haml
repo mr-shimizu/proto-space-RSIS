@@ -1,8 +1,8 @@
-= render partial: 'shared/semi_header'
+= render 'shared/semi_header'
 
 .container.proto-list
   .row
-    = render partial: 'prototypes/prototype', collection: @prototypes
+    = render @prototypes
 
 .text-center
   = paginate(@prototypes)
