@@ -10,6 +10,8 @@
             = @prototype.title
             -if current_user_has?(@prototype)
               = link_to "EDIT", edit_prototype_path(@prototype), class: "btn btn-xs navbar-inverse btn-edit"
+            - if current_user_has?(@prototype)
+              = link_to 'delete', "/prototypes/#{@prototype.id}", method: :delete, class: "btn btn-xs navbar-inverse btn-edit"
           .proto-user
             by
             = link_to "#{@prototype.user.name}", user_path(@prototype.user)
