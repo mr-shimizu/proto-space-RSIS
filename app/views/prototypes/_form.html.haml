@@ -48,5 +48,8 @@
           .row
             .col-md-3
               = text_field_tag 'prototype[tag_list]', @prototype.tag_list.join(","), placeholder: "tag"
+        .row
+          - if current_user_has?(@prototype) && @prototype.id
+            = link_to '削除', "/prototypes/#{@prototype.id}", method: :delete, data: {confirm: 'ほんまに消すで？'}, class: "btn btn-primary navbar-btn"
       .row.text-center.proto-btn
         = f.submit "PUBLISH", id: "button", class: "btn btn-lg btn-primary btn-block"
