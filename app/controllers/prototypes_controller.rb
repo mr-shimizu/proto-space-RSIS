@@ -41,7 +41,9 @@ class PrototypesController < ApplicationController
 
   def destroy
     @prototype.destroy
+    redirect_to root_path, notice: '削除しました'
   end
+
 
   private
 
