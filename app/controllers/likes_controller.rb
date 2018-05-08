@@ -1,5 +1,10 @@
 class LikesController < ApplicationController
+
   before_action :set_variables, only: [:create, :destroy]
+
+  def index
+    @prototypes = Prototype.all.page(params[:page]).per(10).order("likes_count DESC")
+  end
 
   def create
     @like = Like.create(like_params)
