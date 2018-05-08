@@ -40,6 +40,7 @@ class PrototypesController < ApplicationController
 
   def destroy
     @prototype.destroy
+    redirect_to("/")
   end
 
   private
