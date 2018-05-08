@@ -19,8 +19,9 @@
               = @prototype.user.position
   .col-md-6#like-button
     =render partial: "likes/like", locals: { prototype: @prototype, likes: @likes, like: @like }
-  .col-md-9.image-box
-    = image_tag(@prototype.set_main_thumbnail.large, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")
+  .row
+    .col-md-9.image-box
+      = image_tag(@prototype.set_main_thumbnail.large, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")
     .col-md-3
       %ul.proto-sub-list.list-group
         - @prototype.captured_images.sub.each do |image|
