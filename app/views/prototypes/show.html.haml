@@ -10,15 +10,13 @@
             = @prototype.title
             -if current_user_has?(@prototype)
               = link_to "EDIT", edit_prototype_path(@prototype), class: "btn btn-xs navbar-inverse btn-edit"
-            - if current_user_has?(@prototype)
-              = link_to 'delete', "/prototypes/#{@prototype.id}", method: :delete, class: "btn btn-xs navbar-inverse btn-edit"
           .proto-user
             by
             = link_to "#{@prototype.user.name}", user_path(@prototype.user)
             .degree
               = @prototype.user.position
-  .like-button
-    =render "like"
+  .col-md-6#like-button
+    =render partial: "likes/like", locals: { prototype: @prototype, likes: @likes, like: @like }
   .row
     .col-md-9.image-box
       = image_tag(@prototype.set_main_thumbnail.large, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180503062400) do
+ActiveRecord::Schema.define(version: 20180503092956) do
 
   create_table "captured_images", force: :cascade do |t|
     t.string  "content",      limit: 255
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20180503062400) do
   create_table "likes", force: :cascade do |t|
     t.integer "user_id",      limit: 4
     t.integer "prototype_id", limit: 4
+    t.integer "likes_count",  limit: 4, default: 0, null: false
   end
 
   add_index "likes", ["prototype_id"], name: "fk_rails_8847d87628", using: :btree
