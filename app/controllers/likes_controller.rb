@@ -19,7 +19,7 @@ private
 
   def set_variables
     @prototype = Prototype.find(params[:prototype_id])
-    @likes = Like.where(params[:prototype_id])
+    @likes = @prototype.likes
   end
 
   def like_params
