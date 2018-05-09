@@ -8,5 +8,5 @@ class User < ActiveRecord::Base
   has_many :likes
   has_many :comments, dependent: :destroy
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { minimum: 3, maximum: 20 }
 end

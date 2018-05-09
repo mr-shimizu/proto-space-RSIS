@@ -11,3 +11,5 @@ log/capistrano.log
 
 # ignore all the file under public
 /public
+
+*.log
