@@ -1,9 +1,17 @@
 = render partial: 'shared/semi_header'
 
 .container
+  .row.proto-search
+    %h3.col-md-12
+      Tags
+      %span#tags_count.num (#{@tags.length})
+    .col-md-8
+      .row
+        %input.form-group.col-md-12#tag-search-field{placeholder: 'タグを入力してください', type: 'text'}
+        #tag-search-result
   .row
     .tags-list
-      %h2 Tag List
+      %h3 Tag List
       %ul
         - @tags.each do |tag|
           %li.col-md-4
