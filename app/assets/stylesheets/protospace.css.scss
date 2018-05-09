@@ -20,12 +20,6 @@ body {
 
 /* -- Main style ------------------------------------ */
 .btn {
-  font-family: "Lato", 'Helvetica Neue, Helvetica, Arial', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.1;
-  text-transform: uppercase;
-  letter-spacing: inherit;
   color: rgba(255, 255, 255, 0.87);
 }
 
@@ -635,4 +629,16 @@ body {
   border-color: #ebccd1;
   color: #a94442;
 }
+
+/* -- tag search ------------------------------------ */
+.form-group {
+  width: 100%;
+}
+
+#tag-search-result {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
 
