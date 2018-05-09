@@ -45,8 +45,8 @@
         .col-md-12
           %h4 Tag List
           .row
-            .col-md-3
-              = text_field_tag 'prototype[tag_list]', @prototype.tag_list.join(","), placeholder: "tag"
+            .col-md-12
+              = text_field_tag 'prototype[tag_list]', @prototype.tag_list.join(","), placeholder: "タグを入力してください,(コンマ)で区切ると複数登録できます"
         .row
           - if current_user_has?(@prototype)
             = link_to 'delete', "/prototypes/#{@prototype.id}", method: :delete, data: {confirm: 'ほんまに消すで？'}, class: "btn btn-xs navbar-inverse btn-edit"
