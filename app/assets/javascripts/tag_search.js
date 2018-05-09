@@ -4,7 +4,6 @@ $(document).on("turbolinks:load",function(){
 <a href="/tags/${tag.name}">${tag.name}</a>
     `
   $("#tag-search-result").append(html);
-
   };
 
   function appendNoTag(tag){
