@@ -16,5 +16,13 @@ describe Prototype do
         expect(prototype).to be_valid
       end
     end
+
+    context 'without validations' do
+      it 'does not have title' do
+        prototype = build(:prototype, title: nil)
+        prototype.valid?
+        expect(prototype.errors[:title]).to include("can't be blank")
+      end
+    end
   end
 end
