@@ -7,7 +7,7 @@ class PrototypesController < ApplicationController
 
   def new
     @prototype = Prototype.new
-    @prototype.captured_images.build
+    @prototype.image_builder
   end
 
   def create
