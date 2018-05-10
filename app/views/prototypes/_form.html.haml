@@ -11,7 +11,7 @@
         .col-md-12
           %h4 Main Thumbnail
           .cover-image-upload#main_image_uploader
-            -  main_image = @prototype.captured_images.main.first
+            - main_image = @prototype.captured_images.main.first
             = f.fields_for :captured_images, main_image do |image|
               = image_tag(nil, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")
               = image.file_field :content, required: true, class: 'upload-fields'
