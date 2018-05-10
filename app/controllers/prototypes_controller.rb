@@ -26,7 +26,6 @@ class PrototypesController < ApplicationController
     if user_signed_in?
       @like = @prototype.like_user(current_user.id)
     end
-    binding.pry
   end
 
   def edit
