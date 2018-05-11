@@ -13,7 +13,9 @@ FactoryGirl.define do
       end
 
       after(:create) do |prototype, evaluator|
-        prototype.captured_images << create_list(:sub_image, evaluator.sub_images_count)
+        evaluator.sub_images_count do
+          prototype.sub_images.create!
+        end
       end
     end
 
@@ -23,7 +25,9 @@ FactoryGirl.define do
       end
 
       after(:create) do |prototype, evaluator|
-        prototype.tags << create_list(:tag, evaluator.tags_count)
+        evaluator.tags_count do
+          prototype.tags.create!
+        end
       end
     end
 
@@ -33,7 +37,9 @@ FactoryGirl.define do
       end
 
       after(:create) do |prototype, evaluator|
-        prototype.comments << create_list(:comment, evaluator.comments_count)
+        evaluator.comments_count.times do
+          prototype.comments.create!
+        end
       end
     end
 
@@ -43,7 +49,9 @@ FactoryGirl.define do
       end
 
       after(:create) do |prototype, evaluator|
-        prototype.likes << create_list(:like, evaluator.likes_count)
+        evaluator.likes_count.times do
+          prototype.likes.create!
+        end
       end
     end
   end
