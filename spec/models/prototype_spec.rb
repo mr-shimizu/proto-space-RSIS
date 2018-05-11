@@ -37,4 +37,25 @@ describe Prototype do
       end
     end
   end
+
+  describe '#like_user(user_id)' do
+    context 'when like_user is the user' do
+      it 'like_user is the user' do
+        user = create(:user)
+        prototype = create(:prototype, user: user)
+        like = create(:like, prototype: prototype, user: user)
+        expect(prototype.like_user(user)) == user
+      end
+    end
+
+    context 'when like_user is not the user' do
+      it 'like_user is not the user' do
+        user = create(:user)
+        another_user = create(:user, id: user.id + 1)
+        prototype = create(:prototype, user: another_user)
+        like = create(:like, prototype: prototype, user: another_user)
+        expect(prototype.like_user(user)).not_to eq user
+      end
+    end
+  end
 end
