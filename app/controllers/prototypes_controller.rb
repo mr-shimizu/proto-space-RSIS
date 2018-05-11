@@ -37,6 +37,7 @@ class PrototypesController < ApplicationController
       redirect_to prototype_path(@prototype), notice: 'プロトタイプを更新しました'
     else
       render :edit
+      return
     end
   end
 
