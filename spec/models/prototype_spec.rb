@@ -58,4 +58,12 @@ describe Prototype do
       end
     end
   end
+
+  describe '#reject_sub_images(attributed)' do
+    it 'does not save with nil content' do
+      captured_sub_image = build(:captured_image, :sub, content: nil)
+      captured_sub_image.valid?
+      expect(captured_sub_image.errors[:content]).to include("can't be blank")
+    end
+  end
 end
