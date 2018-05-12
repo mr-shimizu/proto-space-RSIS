@@ -28,4 +28,8 @@ class Prototype < ActiveRecord::Base
   def posted_date
     created_at.strftime('%b %d %a')
   end
+
+  def image_builder
+    captured_images.build
+  end
 end
