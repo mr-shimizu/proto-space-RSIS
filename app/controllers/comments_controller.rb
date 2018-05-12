@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:edit, :update, :destroy]
 
   def create
-    @comment = Comment.new(content: comment_params[:content], user_id: current_user.id, prototype_id: comment_params[:prototype_id])
+    @comment = Comment.new(comment_params)
     if @comment.save
       respond_to do |format|
         format.html { redirect_to prototype_path(params[:prototype_id]) }
