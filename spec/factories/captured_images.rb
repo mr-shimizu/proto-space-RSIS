@@ -1,16 +1,15 @@
 FactoryGirl.define do
-  factory :captured_image, class: CapturedImage do
-    content ("spec/fixtures/img/sample.png")
+
+  factory :captured_image do
+    content   {File.open("#{Rails.root}/spec/fixtures/sample.png")}
+    id        {Faker::Number.number(3)}
 
     trait :main do
-      status   :main
+      status 0
     end
 
     trait :sub do
-      status   :sub
+      status 1
     end
-
-    factory :main_image, traits: [:main]
-    factory :sub_image, traits: [:sub]
   end
 end
