@@ -72,4 +72,11 @@ describe Prototype do
       expect(prototype.posted_date) == "May 12 Sat"
     end
   end
+
+  describe '#image_builder' do
+    it 'build captured_images' do
+      prototype = create(:prototype)
+      expect(prototype.image_builder) == prototype.captured_images
+    end
+  end
 end
