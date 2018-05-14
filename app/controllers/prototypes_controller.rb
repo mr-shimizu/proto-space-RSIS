@@ -7,7 +7,7 @@ class PrototypesController < ApplicationController
 
   def new
     @prototype = Prototype.new
-    @prototype.captured_images.build
+    @prototype.image_builder
   end
 
   def create
@@ -15,7 +15,7 @@ class PrototypesController < ApplicationController
     if @prototype.save
       redirect_to :root, notice: 'New prototype was successfully created'
     else
-      redirect_to ({ action: new }), alert: 'New prototype was unsuccessfully created'
+      redirect_to ({ action: new }), alert: 'New prototype was not created'
     end
   end
 
@@ -29,7 +29,7 @@ class PrototypesController < ApplicationController
   end
 
   def edit
-    @captured_image = @prototype.captured_images.build
+    @captured_image = @prototype.image_builder
   end
 
   def update
@@ -37,6 +37,7 @@ class PrototypesController < ApplicationController
       redirect_to prototype_path(@prototype), notice: 'プロトタイプを更新しました'
     else
       render :edit
+      return
     end
   end
 
