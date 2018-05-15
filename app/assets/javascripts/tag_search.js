@@ -14,7 +14,7 @@ $(document).on("turbolinks:load",function(){
   };
 
   $("#tag-search-field").on("keyup", function(){
-    let input = $("#tag-search-field").val();
+    var input = $("#tag-search-field").val();
     console.log(input)
     if (input.length !== 0){
       $.ajax({

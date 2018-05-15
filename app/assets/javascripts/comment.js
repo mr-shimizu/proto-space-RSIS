@@ -20,8 +20,8 @@ $(document).on("turbolinks:load",function(){
   }
   $('#new_comment').on('submit', function(e){
     e.preventDefault();
-    let formData = new FormData(this);
-    let url = $(this).attr('action');
+    var formData = new FormData(this);
+    var url = $(this).attr('action');
       $.ajax({
         url: url,
         type: 'POST',
@@ -31,7 +31,7 @@ $(document).on("turbolinks:load",function(){
         contentType: false
       })
       .done(function(data){
-        let html = buildHTML(data);
+        var html = buildHTML(data);
         $('#comments').append(html)
         $('#comment_field').val('')
       })
