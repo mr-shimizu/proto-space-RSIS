@@ -1,6 +1,6 @@
 $(document).on("turbolinks:load",function(){
   function buildHTML(comment){
-        var html = "<div> new div</div>"//`<div class="media">
+        var html = "<div> new div</div>"//<div class="media">
                       // <div class="media-left">
                       //   <a href="/users/${comment.user_id}"><img alt="profile_photo" class="media-object" style="width: 64px; height: 64px;" src=${comment.avatar_url}>
                       //   </a></div>
@@ -14,7 +14,7 @@ $(document).on("turbolinks:load",function(){
                       //       ${comment.content}
                       //     </p>
                       //   </div>
-                      // </div>`
+                      // </div>
 
   return html;
   }
