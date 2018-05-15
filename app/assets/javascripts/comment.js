@@ -1,21 +1,23 @@
 $(document).on("turbolinks:load",function(){
   function buildHTML(comment){
-        var html = "<div> new div</div>"//<div class="media">
-                      // <div class="media-left">
-                      //   <a href="/users/${comment.user_id}"><img alt="profile_photo" class="media-object" style="width: 64px; height: 64px;" src=${comment.avatar_url}>
-                      //   </a></div>
-                      //   <div class="media-body">
-                      //     <h4 class="media-heading" id="top-aligned-media">
-                      //       ${comment.user.name}
-                      //       <a rel="nofollow" data-method="delete" href="/prototypes/${comment.prototype_id}/comments/${comment.id}">削除</a>
-                      //       <a href="/prototypes/${comment.prototype_id}/comments/${comment.id}/edit">編集</a>
-                      //     </h4>
-                      //     <p>
-                      //       ${comment.content}
-                      //     </p>
-                      //   </div>
-                      // </div>
-
+        var html =
+          "<div class='media'>\n" +
+            "<div class='media-left'>\n" +
+              "<a href=/users/" + comment.user_id + ">\n" +
+                "<img alt='profile_photo' class='media-object' style='width: 64px; height: 64px;' src=" + comment.avatar_url +">\n" +
+              "</a>\n" +
+            "</div>\n" +
+            "<div class='media-body'>\n" +
+              "<h4 class='media-heading' id='top-aligned-media'>\n" +
+                comment.user.name + "\n" +
+                "<a rel='nofollow' data-method='delete' href=/prototypes/" + comment.prototype_id + "/comments/" +comment.id +">削除</a>\n" +
+                "<a href=/prototypes/" + comment.prototype_id + "/comments/" + comment.id +"/edit>編集</a>\n" +
+              "</h4>\n" +
+              "<p>\n" +
+                comment.content + "\n" +
+              "</p>\n" +
+            "</div>\n" +
+          "</div>"
   return html;
   }
   $('#new_comment').on('submit', function(e){
