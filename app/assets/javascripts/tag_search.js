@@ -1,15 +1,15 @@
 $(document).on("turbolinks:load",function(){
   function appendTag(tag){
-    var html =`
-<a href="/tags/${tag.name}">${tag.name}</a>
-    `
+    var html = "<div> new div</div>" //`
+// <a href="/tags/${tag.name}">${tag.name}</a>
+//     `
   $("#tag-search-result").append(html);
   };
 
   function appendNoTag(tag){
-    var html =`
-<p class="tag__name">${tag}</p>
-    `
+    var html = "<div> new div</div>"//`
+// <p class="tag__name">${tag}</p>
+//     `
     $("#tag-search-result").append(html);
   };
 
