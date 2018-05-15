@@ -13,3 +13,5 @@ log/capistrano.log
 /public
 
 *.log
+
+config/secrets.yml
