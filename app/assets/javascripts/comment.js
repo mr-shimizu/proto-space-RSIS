@@ -4,14 +4,14 @@ $(document).on("turbolinks:load",function(){
           "<div class='media'>\n" +
             "<div class='media-left'>\n" +
               "<a href=/users/" + comment.user_id + ">\n" +
-                "<img alt='profile_photo' class='media-object' style='width: 64px; height: 64px;' src=" + comment.avatar_url +">\n" +
+                "<img alt='profile_photo' class='media-object' style='width: 64px; height: 64px;' src=" + comment.avatar_url + ">\n" +
               "</a>\n" +
             "</div>\n" +
             "<div class='media-body'>\n" +
               "<h4 class='media-heading' id='top-aligned-media'>\n" +
                 comment.user.name + "\n" +
-                "<a rel='nofollow' data-method='delete' href=/prototypes/" + comment.prototype_id + "/comments/" +comment.id +">削除</a>\n" +
-                "<a href=/prototypes/" + comment.prototype_id + "/comments/" + comment.id +"/edit>編集</a>\n" +
+                "<a rel='nofollow' data-method='delete' href=/prototypes/" + comment.prototype_id + "/comments/" +comment.id + ">削除</a>\n" +
+                "<a href=/prototypes/" + comment.prototype_id + "/comments/" + comment.id + "/edit>編集</a>\n" +
               "</h4>\n" +
               "<p>\n" +
                 comment.content + "\n" +
