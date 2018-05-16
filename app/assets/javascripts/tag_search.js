@@ -6,7 +6,7 @@ $(document).on("turbolinks:load",function(){
   };
 
   function appendNoTag(tag){
-    var html = "<p class='tag__name'>" +tag + "</p>"
+    var html = "<p class='tag__name'>" + tag + "</p>"
 
     $("#tag-search-result").append(html);
   };
