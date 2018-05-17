@@ -1,20 +1,18 @@
 $(document).on("turbolinks:load",function(){
   function appendTag(tag){
-    var html =`
-<a href="/tags/${tag.name}">${tag.name}</a>
-    `
+    var html = "<a href=/tags/" + tag.name + ">" + tag.name + "</a><span>, </span>"
+
   $("#tag-search-result").append(html);
   };
 
   function appendNoTag(tag){
-    var html =`
-<p class="tag__name">${tag}</p>
-    `
+    var html = "<p class='tag__name'>" + tag + "</p>"
+
     $("#tag-search-result").append(html);
   };
 
   $("#tag-search-field").on("keyup", function(){
-    let input = $("#tag-search-field").val();
+    var input = $("#tag-search-field").val();
     console.log(input)
     if (input.length !== 0){
       $.ajax({
